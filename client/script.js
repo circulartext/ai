@@ -68,28 +68,28 @@ const handleSubmit = async (e) => {
     const data = new FormData(form)
 
     // user's chatstripe
-    chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
+    chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
 
     // to clear the textarea input 
-    form.reset();
+    form.reset()
 
     // bot's chatstripe
     const uniqueId = generateUniqueId()
-    chatContainer.innerHTML += chatStripe(true, " ", uniqueId);
+    chatContainer.innerHTML += chatStripe(true, " ", uniqueId)
 
     // to focus scroll to the bottom 
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
     // specific message div 
-    const messageDiv = document.getElementById(uniqueId);
+    const messageDiv = document.getElementById(uniqueId)
 
     // messageDiv.innerHTML = "..."
-    loader(messageDiv);
+    loader(messageDiv)
 
-    const response = await fetch('http://localhost:5000', {
+    const response = await fetch('https://wow-ojpn.onrender.com/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             prompt: data.get('prompt')
@@ -118,3 +118,4 @@ form.addEventListener('keyup', (e) => {
         handleSubmit(e)
     }
 })
+
