@@ -1,13 +1,9 @@
-
-
 import express from 'express'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 import { Configuration, OpenAIApi } from 'openai'
 
 dotenv.config()
-
-console.log(process.env.OPENAI_API_KEY)
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -49,13 +45,4 @@ app.post('/', async (req, res) => {
   }
 })
 
-
 app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
-const PORT = process.env.PORT || 5000;
-
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
